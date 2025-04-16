@@ -1,6 +1,6 @@
 param (
     [Parameter(Mandatory = $true)]
-    [string] $containterAppName,
+    [string] $containerAppName,
     [Parameter(Mandatory = $true)]
     [int] $minReplicas
 )
@@ -12,7 +12,7 @@ Connect-AzAccount -Identity | Out-Null
 
 Write-Output "Updating container app settings"
 Update-AzContainerApp `
-    -Name $containterAppName `
+    -Name $containerAppName `
     -ResourceGroupName "rg-frfl-evolve-${environment}" `
     -ScaleMinReplica $minReplicas | Out-Null
 
