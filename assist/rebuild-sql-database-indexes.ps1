@@ -46,5 +46,6 @@ else {
 }
 
 # Execute SQL query
-##$token = (Get-AzAccessToken -AsSecureString -ResourceUrl https://database.windows.net).Token
-Invoke-SqlCmd -ServerInstance $databaseServerInstance -Database $databaseName -Query $query #-AccessToken $token
+#$token = (Get-AzAccessToken -AsSecureString -ResourceUrl https://database.windows.net).Token
+$token = az account get-access-token --resource https://database.windows.net --query accessToken -o tsv
+Invoke-SqlCmd -ServerInstance $databaseServerInstance -Database $databaseName -Query $query -AccessToken $token
