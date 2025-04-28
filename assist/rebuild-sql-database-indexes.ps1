@@ -39,12 +39,12 @@ EXEC sp_executesql @sql;
 "@
 
 if (Get-Module -ListAvailable -Name SQLServer) {
-    Write-Information "SQLServer module already installed"
+    Write-Output "SQLServer module already installed"
 }
 else {
     Install-Module SQLServer
 }
 
 # Execute SQL query
-$token = (Get-AzAccessToken -ResourceUrl https://database.windows.net).Token
-Invoke-SqlCmd -ServerInstance $databaseServerInstance -Database $databaseName -AccessToken $token -Query $query
+##$token = (Get-AzAccessToken -AsSecureString -ResourceUrl https://database.windows.net).Token
+Invoke-SqlCmd -ServerInstance $databaseServerInstance -Database $databaseName -Query $query #-AccessToken $token
