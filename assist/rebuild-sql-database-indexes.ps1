@@ -13,7 +13,7 @@ param (
 Import-Module SQLServer
 
 Write-Output "Authenticating with Managed Identity that is built into the Automation Account..."
-#az login --identity | Out-Null
+az login --identity | Out-Null
 
 if ($subscriptionId) {
     Write-Output "Setting Azure subscription context to $subscriptionId..."
